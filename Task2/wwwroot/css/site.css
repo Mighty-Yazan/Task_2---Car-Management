@@ -1,0 +1,134 @@
+html 
+{
+    font-size: 14px;
+}
+
+@media (min-width: 768px) 
+{
+    html 
+    {
+        font-size: 16px;
+    }
+}
+
+body 
+{
+    margin-bottom: 60px;
+    background-color: #f9fafb;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.card-hover 
+{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover
+{
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+
+.admin-add-card 
+{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px dashed #007bff;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+    .admin-add-card:hover 
+    {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    .admin-add-card h1
+    {
+        font-size: 4rem;
+        animation: pulse 1.5s infinite;
+    }
+
+@keyframes pulse 
+{
+    0% 
+    {
+        transform: scale(1);
+    }
+
+    50% 
+    {
+        transform: scale(1.2);
+    }
+
+    100% 
+    {
+        transform: scale(1);
+    }
+}
+
+
+.btn-hover:hover 
+{
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+
+.file-drop-wrapper 
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.file-drop 
+{
+    border: 2px dashed #007bff;
+    border-radius: 10px;
+    padding: 25px 15px;
+    text-align: center;
+    color: #007bff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    width: 280px;
+    background-color: #fdfdff;
+}
+
+.file-drop:hover 
+{
+    background: #e6f0ff;
+    color: #0056b3;
+}
+
+.file-drop input[type=file] 
+{
+    display: none;
+}
+
+.form-row 
+{
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group 
+{
+    flex: 1;
+}
+
+.button-group 
+{
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}

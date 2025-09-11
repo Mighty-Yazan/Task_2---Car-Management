@@ -1,0 +1,90 @@
+﻿@model Task2.Models.Car
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="mb-4 text-center">Create Car</h1>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="file-drop-wrapper">
+                <label class="file-drop">
+                    <span id="fileText">Click to upload car image</span>
+                    <input type="file" name="Img" id="ImgInput" accept="image/*" />
+                    <img id="previewImage" src="#" alt="Preview" style="display:none; max-width:100%; max-height:200px; margin-top:10px;" />
+                </label>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="form-control" placeholder="e.g. Nissan Skyline" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="prodyear" class="control-label"></label>
+                    <input asp-for="prodyear" class="form-control" placeholder="e.g. 2024" />
+                    <span asp-validation-for="prodyear" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="Color" class="control-label"></label>
+                    <input asp-for="Color" class="form-control" placeholder="e.g. Blue" />
+                    <span asp-validation-for="Color" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" placeholder="e.g. 50,000" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group button-group mt-4">
+                <input type="submit" value="Create" class="btn btn-primary btn-hover px-5 py-2" />
+                <a asp-action="Index" class="btn btn-outline-secondary btn-hover px-4 py-2">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts 
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        const imgInput = document.getElementById('ImgInput');
+        const fileText = document.getElementById('fileText');
+        const previewImage = document.getElementById('previewImage');
+
+        imgInput.addEventListener('change', function () {
+            if (this.files && this.files[0]) 
+            {
+                const reader = new FileReader();
+                reader.onload = function (e) 
+                {
+                    fileText.style.display = "none";
+                    previewImage.style.display = "block";
+                    previewImage.src = e.target.result;
+                };
+                reader.readAsDataURL(this.files[0]);
+            } else 
+            {
+                fileText.style.display = "block";
+                fileText.textContent = "Click to upload car image";
+                previewImage.style.display = "none";
+                previewImage.src = "#";
+            }
+        });
+    </script>
+}

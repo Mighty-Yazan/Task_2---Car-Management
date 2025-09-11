@@ -1,0 +1,85 @@
+﻿@model Task2.Models.Car
+@using System.Globalization
+
+@{
+    ViewData["Title"] = "Car Details";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-lg rounded overflow-hidden">
+        <div class="row g-0">
+            
+            <div class="col-md-5">
+                <img src="@Model.Img" class="img-fluid h-100 object-fit-cover"
+                         style="cursor:pointer;" alt="@Model.Name"
+                         onclick="showImageModal('@Model.Img')" />
+            </div>
+
+            
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h2 class="card-title mb-3">@Model.Name</h2>
+
+                    <ul class="list-group list-group-flush mb-3">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Production Year:</strong></span>
+                            <span>@Model.prodyear</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span><strong>Color:</strong></span>
+                            <span>@Model.Color</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Price:</strong></span>
+                            <span class="badge bg-success fs-6">
+                                $@string.Format(CultureInfo.InvariantCulture, "{0:N0}", Model.Price)
+                            </span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span><strong>Image File:</strong></span>
+                            <span>
+                                @if (!string.IsNullOrEmpty(Model.Img))
+                                {
+                                    <a href="@Model.Img" target="_blank" class="btn btn-sm btn-outline-primary">View File</a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No file uploaded</span>
+                                }
+                            </span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-4 d-flex gap-2">
+                        <a asp-action="Edit" asp-route-id="@Model.id" class="btn btn-warning btn-hover flex-fill">Edit</a>
+                        <a asp-action="Index" class="btn btn-secondary btn-hover flex-fill">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-dark border-0">
+            <div class="modal-body p-0 d-flex justify-content-center align-items-center" style="height:80vh;">
+                <img src="" id="modalImage" class="img-fluid rounded shadow" style="max-height:100%;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts 
+{
+    <script>
+        function showImageModal(imgSrc) 
+        {
+            var modalImg = document.getElementById('modalImage');
+            modalImg.src = imgSrc;
+            var myModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            myModal.show();
+        }
+    </script>
+}

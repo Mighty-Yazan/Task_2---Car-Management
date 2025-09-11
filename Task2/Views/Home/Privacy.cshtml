@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+<h1 class="mb-4 text-center">About Car Management</h1>
+<hr />
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="about-card shadow-sm p-4 text-center">
+            <h3 class="mb-3">Welcome to Car Management!</h3>
+            <p class="mb-3">
+                This application was designed to help car enthusiasts and businesses easily manage their collections.
+                You can add, edit, and delete cars, view details, and even generate reports to track your inventory.
+            </p>
+            <p class="mb-3">
+                Built with <strong>ASP.NET MVC Core</strong> and <strong>Bootstrap</strong>, it combines simplicity with modern design to provide a smooth user experience.
+            </p>
+            <p class="mb-0">
+                Our goal is to make car management intuitive, organized, and visually appealing. Whether you're a dealer, collector, or hobbyist, this app is made for you!
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8 text-center">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-primary btn-hover px-5 py-2">Go to the Showroom</a>
+    </div>
+</div>
+
+<style>
+    body {
+        background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+    }
+
+    .about-card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #e0e0e0;
+        padding: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .about-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-card h3 {
+            color: #34495e;
+            font-weight: 600;
+        }
+
+        .about-card p {
+            color: #555555;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+    .btn-hover:hover {
+        transform: translateY(-2px) scale(1.02);
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        transition: 0.3s;
+    }
+</style>

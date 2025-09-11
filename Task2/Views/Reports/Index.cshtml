@@ -1,0 +1,112 @@
+﻿@{
+    ViewData["Title"] = "Reports";
+}
+
+<h2 class="mb-4 text-center">Car Reports</h2>
+
+<div class="reports-container row justify-content-center g-4">
+
+    <div class="col-md-4">
+        <div class="report-card text-center shadow-sm p-4">
+            <h5>Total Cars</h5>
+            <span class="report-value">@ViewBag.TotalCars</span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="report-card text-center shadow-sm p-4">
+            <h5>Average Price</h5>
+            <span class="report-value">@string.Format("{0:C}", ViewBag.AvgPrice ?? 0)</span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="report-card text-center shadow-sm p-4">
+            <h5>Most Expensive Car</h5>
+            @if (ViewBag.MostExpensiveCar != null)
+            {
+                <span class="report-value">@($"{ViewBag.MostExpensiveCar.Name} - {ViewBag.MostExpensiveCar.Price:C}")</span>
+            }
+            else
+            {
+                <span class="report-value">No cars available</span>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="report-card text-center shadow-sm p-4">
+            <h5>Cheapest Car</h5>
+            @if (ViewBag.CheapestCar != null)
+            {
+                <span class="report-value">@($"{ViewBag.CheapestCar.Name} - {ViewBag.CheapestCar.Price:C}")</span>
+            }
+            else
+            {
+                <span class="report-value">No cars available</span>
+            }
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="report-card text-center shadow-sm p-4">
+            <h5>Price Range</h5>
+            <span class="report-value">
+                @string.Format("{0:C}", ViewBag.MinPrice ?? 0) -
+                @string.Format("{0:C}", ViewBag.MaxPrice ?? 0)
+            </span>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="report-card text-center shadow-sm p-4">
+            <h5>Cars Added This Month</h5>
+            <span class="report-value">@ViewBag.CarsAddedThisMonth</span>
+        </div>
+    </div>
+
+</div>
+
+<style>
+    body 
+    {
+        background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+    }
+
+    .reports-container 
+    {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-bottom: 40px;
+    }
+
+    .report-card 
+    {
+        border-radius: 12px;
+        background-color: #ffffff;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid #e0e0e0;
+    }
+
+    .report-card:hover 
+    {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+    }
+
+    .report-card h5 
+    {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #34495e;
+        font-size: 1.1rem;
+    }
+
+    .report-value 
+    {
+        font-size: 1.6rem;
+        font-weight: 500;
+        color: #16a085;
+        display: block;
+    }
+</style>
